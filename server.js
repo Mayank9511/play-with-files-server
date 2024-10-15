@@ -66,7 +66,7 @@ app.post("/api/ask", (req, res) => {
       if (error.message === "Unsupported file type.") {
         res.send({ answer: error.message });
       } else {
-        res.send({ answer: "An error occurred or file type is not supported" });
+        res.send({ answer: "An error occurred or file type is not supported, try uploading another file" });
       }
     }
   });
