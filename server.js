@@ -9,14 +9,12 @@ const app = express();
 const PORT = 5000;
 console.log("inside server.js");
 
-// CORS configuration to allow your frontend domain
 const corsOptions = {
-  origin: "http://localhost:5173",  // Allow your frontend domain
-  methods: ["POST", "OPTIONS"],      // Allowed HTTP methods
-  allowedHeaders: ["Content-Type"],  // Allowed request headers
+  origin: "http://localhost:5173",  
+  methods: ["POST", "OPTIONS"],      
+  allowedHeaders: ["Content-Type"],  
 };
 
-// Use CORS middleware
 app.use(cors(corsOptions));
 
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
@@ -74,7 +72,10 @@ app.post("/api/ask", (req, res) => {
   });
 });
 
-// Start the server
+app.get("/", (req, res) => {
+  res.send("hello from Play with files..");
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
