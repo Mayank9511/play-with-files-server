@@ -10,7 +10,7 @@ const PORT = 5000;
 console.log("inside server.js");
 
 const corsOptions = {
-  origin: "http://localhost:5173",  
+  origin: ["http://localhost:5173", "https://play-with-files.vercel.app"],  
   methods: ["POST", "OPTIONS"],      
   allowedHeaders: ["Content-Type"],  
 };
