@@ -7,12 +7,13 @@ const formidable = require("formidable-serverless");
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 const fileManager = new GoogleAIFileManager(process.env.API_KEY);
 
+console.log("inside ask.js");
 module.exports = async (req, res) => {
 
   res.setHeader("Access-Control-Allow-Origin", "*"); // Allow all origins (or specify the frontend domain)
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-
+  
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }

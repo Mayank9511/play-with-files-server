@@ -7,6 +7,7 @@ const { GoogleAIFileManager } = require("@google/generative-ai/server");
 
 const app = express();
 const PORT = 5000;
+console.log("inside server.js");
 app.use(cors());
 
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
