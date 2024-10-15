@@ -9,20 +9,19 @@ const fileManager = new GoogleAIFileManager(process.env.API_KEY);
 
 console.log("inside ask.js");
 
+// CORS configuration to allow requests from your frontend
 const corsOptions = {
   origin: "http://localhost:5173",  // Allow your frontend domain
-  methods: "POST, OPTIONS",         // Allowed HTTP methods
-  allowedHeaders: "Content-Type",   // Allowed request headers
+  methods: ["POST", "OPTIONS"],     // Allowed HTTP methods
+  allowedHeaders: ["Content-Type"], // Allowed request headers
 };
 
+// Export the function with CORS applied directly
 module.exports = async (req, res) => {
-  cors(corsOptions)(req, res, async () => { // Apply the CORS middleware
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-
+  // Apply the CORS middleware globally before other logic
+  cors(corsOptions)(req, res, async () => {
     if (req.method === "OPTIONS") {
-      return res.status(200).end();
+      return res.status(200).end();  // End preflight requests
     }
 
     if (req.method !== "POST") {
